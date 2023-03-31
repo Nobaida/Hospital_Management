@@ -53,16 +53,16 @@
                 <a class="nav-link" href="{% url 'depatments' %}">Depatments</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="blog.html">Blog</a>
+                <a class="nav-link" href="{% url 'blog' %}">Blog</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
+                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% static '#' %}"><img src="{% static 'images/search-icon.png' %}"></a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="{% static '#' %}">LOGIN</a>
+                <a class="nav-link" href="{% url 'loginpage' %}">LOGIN</a>
               </li>              
             </ul>
           </div>
@@ -78,7 +78,7 @@
                 <a class="nav-link" href="{% static 'index.html' %}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% static 'about.html' %}">About</a>
+                <a class="nav-link" href="{% url 'about' %}">About</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% static 'doctor.html' %}">Doctor</a>
@@ -99,7 +99,7 @@
                 <a class="nav-link" href="{% static '#' %}"><img src="{% static 'images/search-icon.png' %}"></a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="{% static '#' %}">LOGIN</a>
+                <a class="nav-link" href="{% static 'loginpage' %}">LOGIN</a>
               </li>              
             </ul>
           </div>
@@ -121,8 +121,8 @@
                         <br>seniors and  childrens</h1>
                         <p class="long_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum</p>
                         <div class="btn_main">
-                          <div class="about_us"><a href="{% static '#' %}">About Us</a></div>
-                          <div class="about_bt"><a href="{% static '#' %}">Get Appointment</a></div>
+                          <div class="about_us"><a href="{% url 'about' %}">About Us</a></div>
+                          <div class="about_bt"><a href="{% url 'get_appointment' %}">Get Appointment</a></div>
                         </div>
                       </div>
                     </div>
@@ -135,8 +135,8 @@
                         <br>seniors and  childrens</h1>
                         <p class="long_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum</p>
                         <div class="btn_main">
-                          <div class="about_us"><a href="{% static '#' %}">About Us</a></div>
-                          <div class="about_bt"><a href="{% static '#' %}">Get Appointment</a></div>
+                          <div class="about_us"><a href="{% url 'about' %}">About Us</a></div>
+                          <div class="about_bt"><a href="{% url 'get_appointment' %}">Get Appointment</a></div>
                         </div>
                       </div>
                     </div>
@@ -149,8 +149,8 @@
                         <br>seniors and  childrens</h1>
                         <p class="long_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum</p>
                         <div class="btn_main">
-                          <div class="about_us"><a href="{% static '#' %}">About Us</a></div>
-                          <div class="about_bt"><a href="{% static '#' %}">Get Appointment</a></div>
+                          <div class="about_us"><a href="{% url 'about' %}">About Us</a></div>
+                          <div class="about_bt"><a href="{% url 'get_appointment' %}">Get Appointment</a></div>
                         </div>
                       </div>
                     </div>
@@ -179,7 +179,7 @@
                 <h4 class="about_text">About</h4>
                 <h1 class="highest_text">The Highest provide health care</h1>
                 <p class="lorem_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposedIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed</p>
-                <div class="read_bt"><a href="#">Read More</a></div>
+                <div class="read_bt"><a href="{% url 'read_more' %}">Read More</a></div>
               </div>
             </div>
             <div class="col-md-6">
@@ -201,7 +201,7 @@
                 <h4 class="finest_text">Finest Patient</h4>
                 <h1 class="care_text">Care & Amenities</h1>
                 <p class="ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
-                <div class="read_bt_2"><a href="#">Read More</a></div>
+                <div class="read_bt_2"><a href="{% url 'read_moreone' %}">Read More</a></div>
               </div>
             </div>
           </div>
@@ -249,7 +249,7 @@
                 <h1 class="highest_text">Tests Available</h1>
                 <p class="lorem_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur </p>
                 <div class="read_main">
-                  <div class="read_bt"><a href="#">Read More</a></div>
+                  <div class="read_bt"><a href="{% url 'read_moretwo' %}">Read More</a></div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -322,7 +322,7 @@
             </div>
             <div class="col-md-6">
               <div class="appointment_bt_main">
-                <div class="appointment_bt"><a href="#">Get Appointment</a></div>
+                <div class="appointment_bt"><a href="{% url 'get_appointment' %}">Get Appointment</a></div>
               </div>
             </div>
           </div>
@@ -570,3 +570,4 @@
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
    </body>
    </html>
+

@@ -1,14 +1,13 @@
-from django.shortcuts import render,redirect
-from django.contrib.auth import get_user_model
+import os
+
+from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView
-# from Admin_panel.models import
-import os 
+
+from Admin_panel.models import Appointment
+
 User = get_user_model()
-
-
-# from .models import Admin, Patient, Doctor, Appointment, Bill
 # Create your views here.
 
 def loginpage(request):
@@ -20,7 +19,7 @@ def loginpage(request):
             user = authenticate(email = email, password = password)
             if user:
                 login(request, user)
-                return redirect(my_dasbordpage)
+                return redirect(index)
             else:
                 msg = "Password Is Wrong please Check it and try again..."       
                 return render(request, 'loginpage.html',{'msg':msg})
@@ -32,102 +31,41 @@ def loginpage(request):
 def index(request):
     return render(request,'index.html')
 
-
 def about(request):
     return render(request,'about.html')
   
-    
 def doctor(request):
     return render(request,'doctor.html')
 
 def depatments(request):
     return render(request,'depatments.html')
     
+def blog(request):
+    return render(request,'blog.html')
+
+def contact(request):
+    return render(request,'contact.html')
+
+def get_appointment(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        symptoms = request.POST.get('symptoms')
+        approved = request.POST.get('approved')
+        Appointment = Appointment(name=name, email=email, password=password, symptoms=symptoms,approved=approved)
+        Appointment.save()
+        return redirect('loginpage')
+    return render(request,'get_appointment.html')
+
+def read_more(request):
+    return render(request,'read_more.html')
     
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
-def my_dasbordpage(request):
-    return render(request,'my_dasbordpage.html')
+def read_moreone(request):
+    return render(request,'read_moreone.html')
 
-def about_us(request):
-    return render(request, 'about_us.html')
-
-def Contact_us(request):
-    return render(request, 'Contact_us.html')
-
-
-def admin_page(request):
-    return render(request, 'admin_page.html')
-
-def contacet_page(request):
-    return render(request, 'contacet_page.html')
-
-
-# @login_required
-# def dashboard(request):
-#     admin = Admin.objects.get(user=request.user)
-#     patients_approved = Patient.objects.filter(approved=True).count()
-#     patients_pending = Patient.objects.filter(approved=False).count()
-#     patients_declined = Patient.objects.filter(declined=True).count()
-#     doctors = Doctor.objects.all()
-#     appointments = Appointment.objects.all()
-#     bills = Bill.objects.all()
-#     context = {
-#         'admin': admin,
-#         'patients_approved': patients_approved,
-#         'patients_pending': patients_pending,
-#         'patients_declined': patients_declined,
-#         'doctors': doctors,
-#         'appointments': appointments,
-#         'bills': bills
-#     }
-#     return render(request, 'admin/dashboard.html', context)
-
-# @login_required
-# def appointment(request, appointment_id):
-#     appointment = Appointment.objects.get(id=appointment_id)
-#     if request.method == 'POST':
-#         appointment.status = request.POST.get('status')
-#         appointment.save()
-#         return redirect('admin_dashboard')
-#     context = {
-#         'appointment': appointment
-#     }
-#     return render(request, 'admin/appointment.html', context)
-
-# @login_required
-# def discharge(request, patient_id):
-#     patient = Patient.objects.get(id=patient_id)
-#     if request.method == 'POST':
-#         patient.discharged = True
-#         patient.save()
-#         return redirect('admin_dashboard')
-#     context = {
-#         'patient': patient
-#     }
-#     return render(request, 'admin/discharge.html', context)
-
-# @login_required
-# def billing(request, patient_id):
-#     patient = Patient.objects.get(id=patient_id)
-#     if request.method == 'POST':
-#         room_charges = request.POST.get('room_charges')
-#         doctor_fees = request.POST.get('doctor_fees')
-#         medicine_charges = request.POST.get('medicine_charges')
-#         other_charges = request.POST.get('other_charges')
-#         total = int(room_charges) + int(doctor_fees) + int(medicine_charges) + int(other_charges)
-#         bill = Bill(patient=patient, room_charges=room_charges, doctor_fees=doctor_fees, medicine_charges=medicine_charges, other_charges=other_charges, total=total)
-#         bill.save()
-#         return redirect('admin_dashboard')
-#     context = {
-#         'patient': patient
-#     }
-#     return render(request, 'admin/billing.html', context)
+def read_moretwo(request):
+    return render(request,'read_moretwo.html')
+    
+    
