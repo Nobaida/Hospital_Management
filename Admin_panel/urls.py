@@ -1,6 +1,6 @@
 
 from django.urls import path
-from Admin_panel.views import loginpage,index,about,doctor,depatments,blog,contact,get_appointment,read_more,read_moreone,read_moretwo
+from Admin_panel.views import loginpage,index,about,doctor,depatments,blog,contact,get_appointment,read_more,read_moreone,read_moretwo,admin_panel
 
 urlpatterns = [
     path('loginpage',loginpage,name='loginpage'),
@@ -14,7 +14,8 @@ urlpatterns = [
     path("read_more/",read_more, name='read_more'),
     path("read_moreone/",read_moreone, name='read_moreone'),
     path("read_moretwo/",read_moretwo, name='read_moretwo'),
-    
+    path('admin_panel/',admin_panel, name='admin_panel'),
+     
 ]
 
 

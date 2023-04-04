@@ -1,9 +1,7 @@
 from email.policy import default
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
-
-
-
+# from Docter_panel.models import Patient
 
 # Create your models here.
 class UserManager(BaseUserManager):
@@ -54,13 +52,68 @@ class User(AbstractUser):
 class Appointment(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=254, unique=True)
-    password = models.CharField(max_length=50)
     symptoms = models.TextField()
-    approved = models.BooleanField(default=False)
+    approved = models.BooleanField(null=True, blank=True,default=False,)
 
     def __str__(self):
         return str(self.name)
 
+class Bill(models.Model):
+    # patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='docterPatient')
+    appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
+    room_charge = models.DecimalField(max_digits=8, decimal_places=2)
+    doctor_fee = models.DecimalField(max_digits=8, decimal_places=2)
+    medicine_charge = models.DecimalField(max_digits=8, decimal_places=2)
+    other_charge = models.DecimalField(max_digits=8, decimal_places=2)
+    total = models.DecimalField(max_digits=8, decimal_places=2)                    
+    
+    def __str__(self):
+        return str(self.room_charge)
+    
+class Management_Appointment(models.Model):
+    patient = models.ForeignKey(User, related_name= "userpatient", on_delete=models.CASCADE)
+    doctor = models.ForeignKey(User,related_name="userdoctor" ,on_delete=models.CASCADE)
+    date = models.DateField(auto_now=False)
+    time = models.TimeField(auto_now=False)
+    
+    def __str__(self):
+        return str(self.date)
+    
+class Request(models.Model):
+    patient = models.ForeignKey(User, on_delete=models.CASCADE,related_name='Requestpatient')
+    doctor = models.ForeignKey(User, on_delete=models.CASCADE,related_name='Requestdoctor')
+    date = models.DateField(auto_now=False)
+    time = models.TimeField(auto_now=False)
+    message = models.CharField(max_length=1024)
+    status = models.CharField(max_length=10, choices=[('pending', 'Pending'), ('approved', 'Approved'), ('declined', 'Declined')])
+    
+    def __str__(self):
+        return str(self.message)
 
+class Record(models.Model):
+    patient = models.ForeignKey(User, on_delete=models.CASCADE,related_name='Recordpatient')
+    doctor = models.ForeignKey(User, on_delete=models.CASCADE,related_name='Recorddoctor')
+    date = models.DateField(auto_now=False)
+    time = models.TimeField(auto_now=False)
+    note = models.CharField(max_length=10)
+    
+    def __str__(self):
+        return str(self.note)
 
+class Discharge(models.Model):
+    appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
+    data_andtime = models.DateTimeField(auto_now=False)
+    
+    def __str__(self):
+        return str(self.data_andtime)
+
+class Admins(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return str(self.user)
+    
+    
+    
+    
     

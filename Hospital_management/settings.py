@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Admin_panel',
-    'Docter_panel',
-    'patient_panel',
+    'Admin_panel.apps.AdminPanelConfig',
+    'Docter_panel.apps.DocterPanelConfig',
+    'patient_panel.apps.PatientPanelConfig',
     'rest_framework',
 ]
 
